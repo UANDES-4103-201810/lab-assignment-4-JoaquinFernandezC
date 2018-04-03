@@ -9,9 +9,9 @@ class Event < ApplicationRecord
     end
   end
   def is_posible_to_create
-    if place_id
-      if start_date
-        errors.add()
+    if place_id.exists?
+      if start_date.exists?
+        errors.add(:place_id, 'cannot create at same place')
       end
     end
   end
